@@ -1211,6 +1211,7 @@ export interface FileSystemResolver {
     statSync(path: string): { mode: number; size: number; };
     readdirSync(path: string): string[];
     readFileSync(path: string): FileDataBuffer;
+    writeFileSync?(path: string, data: string | Buffer, encoding: string | null): void;
 }
 export interface FileSystemEntries {
     readonly files: readonly string[];

@@ -1,15 +1,18 @@
 import {FileSystem} from "../dist/index.js";
 
-const fs=new FileSystem(false, {
+const fs=new FileSystem();/*false, {
     files: {
         "/test.ts": `let x:number=123;`
     }
-});
+});*/
+fs.writeFileSync("/test.ts",`let x:number=123;`);
 const r=fs.readFileSync("/test.ts","utf-8");
 console.log(r);
 fs.writeFileSync("/test.ts","HOGEFUGA");
 console.log(fs.readFileSync("/test.ts","utf-8"));
 
+fs.mountSync("/tmp/","ram");
+/*
 fs.mountSync("/","/tmp/", {   
     // statSync(path: string): { mode: number; size: number; };
     statSync(path) {
@@ -37,12 +40,13 @@ fs.mountSync("/","/tmp/", {
             data: "0123456789",
         };
     }
-});
+});*/
+fs.writeFileSync("/tmp/test.txt","hogefugaaacdef");
 console.log(fs.readFileSync("/tmp/test.txt","utf-8"));
-//fs.writeFileSync("/tmp/test.txt","hogefugaaacdef");
+console.log(fs.readdirSync("/"));
 //console.log(fs.readFileSync("/tmp/test.txt","utf-8"));
 window.fs=fs;
-function traverse(link,prefix="") {
+/*function traverse(link,prefix="") {
     for (let [k,v] of link) {
         console.log(prefix+"/"+k,v);
         if (v.links) {
@@ -50,4 +54,4 @@ function traverse(link,prefix="") {
         }
     }
 }
-traverse(fs._getRootLinks());
+traverse(fs._getRootLinks());*/

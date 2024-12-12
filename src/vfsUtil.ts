@@ -360,6 +360,16 @@ export class FileSystem {
         }
     }
 
+    public appendFileSync(path: string, data: string | Buffer, encoding: string | null = null): void {
+        if (this.isReadonly) throw createIOError("EROFS");
+        const [fs, fpath]=this.followLink(path);
+        if (typeof data==="string") {
+            fs.appendContent(fpath, Content.plainText(data));
+        } else {
+            fs.appendContent(fpath, Content.bin(data));
+        }
+    }
+
 }
 
 export interface FileSystemOptions {

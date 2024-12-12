@@ -1,8 +1,5 @@
-//define(["extend","PathUtil","MIMETypes","assert","DeferredUtil"],
-//function (extend, P, M,assert,DU){
 import Util from "./Util.js";
 import assert from "./assert.js";
-import DU from "./DeferredUtil.js";
 import P from "./PathUtil.js";
 import M from "./MIMETypes.js";
 const extend=Util.extend;
@@ -72,30 +69,12 @@ extend(FS.prototype, {
         var l = c.toBin().byteLength;
         return l;
     },
-    getContentAsync: function (path, options) {
-        if (!this.supportsSync()) stub("getContentAsync");
-        return DU.resolve(this.getContent.apply(this, arguments));
-    },
     setContent: function (path, content, options) {
         // content: String|ArrayBuffer|InputStream|Reader
         stub("");
     },
-    setContentAsync: function (path, content, options) {
-        var t = this;
-        if (!t.supportsSync()) stub("setContentAsync");
-        return DU.resolve(content).then(function (content) {
-            return DU.resolve(t.setContent(path, content, options));
-        });
-    },
     appendContent: function (/*path,content*/) {
         stub("appendContent");
-    },
-    appendContentAsync: function (path, content, options) {
-        var t = this;
-        if (!t.supportsSync()) stub("appendContentAsync");
-        return DU.resolve(content).then(function (content) {
-            return DU.resolve(t.appendContent(path, content, options));
-        });
     },
     getMetaInfo: function (path, options) {
         stub("");
@@ -116,10 +95,6 @@ extend(FS.prototype, {
     opendir: function (path, options) {
         //ret: [String] || Stream<string> // https://nodejs.org/api/stream.html#stream_class_stream_readable
         stub("opendir");
-    },
-    opendirAsync: function (path, options) {
-        if (!this.supportsSync()) stub("opendirAsync");
-        return DU.resolve(this.opendir.apply(this, arguments));
     },
     cp: function (path, dst, options) {
         assert.is(arguments, [P.Absolute, P.Absolute]);

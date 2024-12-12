@@ -1,8 +1,6 @@
-//define(["assert","FSClass","PathUtil","SFile"], function (assert,FS,P,SFile) {
 import assert from "./assert.js";
 import FS from "./FSClass.js";
 import P from "./PathUtil.js";
-import SFile from "./SFile.js";
 var RootFS = function (defaultFS) {
     assert.is(defaultFS, FS);
     this.mount(null, defaultFS);
@@ -52,10 +50,6 @@ var p = {
         });
         if (!res) this.err(path, "Cannot resolve");
         return assert.is(res, FS);
-    },
-    get: function (path) {
-        assert.is(path, P.Absolute);
-        return new SFile(this.resolveFS(path), path);
     },
     addObserver: function (_1, _2, _3) {
         this.observers = this.observers || [];

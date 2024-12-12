@@ -1,10 +1,7 @@
 import A from "./assert.js";
 import _Content from "./Content.js";
 import FSClass from "./FSClass.js";
-import DU from "./DeferredUtil.js";
-import PR from "./promise.js";
 import _Env from "./Env.js";
-import _SFile from "./SFile.js";
 import _RootFS from "./RootFS.js";
 import _LSFS from "./LSFS.js";
 import P from "./PathUtil.js";
@@ -13,16 +10,11 @@ import _zip from "./zip.js";
 export let assert = A;
 export let Content = _Content;
 export let Class = FSClass;
-export let DeferredUtil = DU;
-if (!DU.config.useJQ) {
-    DU.external.Promise = PR;
-}
 export let Env = _Env;
 export let LSFS = _LSFS;
 export let NativeFS = {available:false};
 export let PathUtil = P;
 export let RootFS = _RootFS;
-export let SFile = _SFile;
 export let WebFS = _WebFS;
 export let zip = _zip;
 var rootFS;
@@ -111,7 +103,6 @@ export let expandPath = function () {
 };
 export let resolve = function (path, base) {
     FS.init();
-    if (FS.SFile.is(path)) return path;
     path = env.expandPath(path);
     if (base && !P.isAbsolutePath(path)) {
         base = env.expandPath(base);
@@ -127,12 +118,9 @@ export let unmount = function () {
     FS.init();
     return rootFS.unmount.apply(rootFS, arguments);
 };
-export let isFile = function (f) {
-    return FS.SFile.is(f);
-};
 let FS={assert,Content,Class,DeferredUtil,Env,LSFS,NativeFS,
-    PathUtil,RootFS,SFile,WebFS,zip,addFSType,availFSTypes,setEnvProvider,getEnvProvider,
+    PathUtil,RootFS,WebFS,zip,addFSType,availFSTypes,setEnvProvider,getEnvProvider,
     setEnv,getEnv,localStorageAvailable,init,getRootFS,get,expandPath,resolve,
-    mount,unmount,isFile};
+    mount,unmount};
 FS.default=FS;
 export {FS as default};

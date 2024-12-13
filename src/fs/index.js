@@ -5,8 +5,8 @@ import _Env from "./Env.js";
 import _RootFS from "./RootFS.js";
 import _LSFS from "./LSFS.js";
 import P from "./PathUtil.js";
-import _WebFS from "./WebFS.js";
-import _zip from "./zip.js";
+//import _WebFS from "./WebFS.js";
+//import _zip from "./zip.js";
 export let assert = A;
 export let Content = _Content;
 export let Class = FSClass;
@@ -15,8 +15,8 @@ export let LSFS = _LSFS;
 export let NativeFS = {available:false};
 export let PathUtil = P;
 export let RootFS = _RootFS;
-export let WebFS = _WebFS;
-export let zip = _zip;
+//export let WebFS = _WebFS;
+//export let zip = _zip;
 var rootFS;
 var env = new Env({});
 export let addFSType = FSClass.addFSType;
@@ -118,8 +118,8 @@ export let unmount = function () {
     FS.init();
     return rootFS.unmount.apply(rootFS, arguments);
 };
-let FS={assert,Content,Class,DeferredUtil,Env,LSFS,NativeFS,
-    PathUtil,RootFS,WebFS,zip,addFSType,availFSTypes,setEnvProvider,getEnvProvider,
+let FS={assert,Content,Class,Env,LSFS,NativeFS,
+    PathUtil,RootFS,addFSType,availFSTypes,setEnvProvider,getEnvProvider,
     setEnv,getEnv,localStorageAvailable,init,getRootFS,get,expandPath,resolve,
     mount,unmount};
 FS.default=FS;

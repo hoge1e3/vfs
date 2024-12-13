@@ -8,7 +8,7 @@ const fs=new FileSystem();/*false, {
 fs.writeFileSync("/test.ts",`let x:number=123;`);
 const r=fs.readFileSync("/test.ts","utf-8");
 console.log(r);
-fs.writeFileSync("/test.ts","HOGEFUGA");
+fs.appendFileSync("/test.ts","\n//HOGEFUGA");
 console.log(fs.readFileSync("/test.ts","utf-8"));
 
 fs.mountSync("/tmp/","ram");

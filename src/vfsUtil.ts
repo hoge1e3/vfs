@@ -5,7 +5,12 @@
 //import * as vpath from "./vpathUtil";
 //import * as core from "./core";
 //import {Buffer} from "buffer";
-import {getRootFS, RootFS, FileSystem as FSClass, PathUtil, MetaInfo, Content} from "@hoge1e3/fs";
+//import {getRootFS, RootFS, FileSystem as FSClass, PathUtil, MetaInfo} from "@hoge1e3/fs";
+import { getRootFS } from "./fs";
+import Content from "./fs/Content";
+import FSClass, { MetaInfo } from "./fs/FSClass";
+import PathUtil from "./fs/PathUtil";
+import RootFS from "./fs/RootFS";
 
 // file type
 const S_IFMT = 0o170000; // file type

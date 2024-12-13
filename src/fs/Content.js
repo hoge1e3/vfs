@@ -1,7 +1,7 @@
 //define(["assert","Util","FileSaver"],function (assert,Util,saveAs) {
 import Util from "./Util.js";
 import assert from "./assert.js";
-import saveAs from "file-saver";
+//import saveAs from "file-saver";
 var Content=function () {};
 var extend=Util.extend;
 // ------ constructor
@@ -61,7 +61,7 @@ Content.bin=function (bin, contentType) {
 Content.looksLikeDataURL=function (text) {
     return text.match(/^data:/);
 };
-Content.download=saveAs;
+//Content.download=saveAs;
 // why blob is not here... because blob content requires FileReader (cannot read instantly!)
 //------- methods
 var p=Content.prototype;
@@ -358,5 +358,3 @@ extend(DataURL.prototype, {
     toString: function () { return assert.is(this.url, String); }
 });
 export default Content;
-  //  return Content;
-//});

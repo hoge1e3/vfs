@@ -1,11 +1,9 @@
-type ContentBuffer=Buffer|ArrayBuffer;
+export type ContentBuffer=Buffer|ArrayBuffer;
 
-export default class ContentFactory {
-    plainText(text:string, contentType?:string):FileContent;
-    url(url:string):FileContent;
-    bin(bin:ContentBuffer):FileContent;
-}
-export class FileContent {
+export default class Content {
+    static plainText(text:string, contentType?:string):Content;
+    static url(url:string):Content;
+    static bin(bin:ContentBuffer):Content;
     toURL():string;
     toBin():ContentBuffer;
     toArrayBuffer():ArrayBuffer;

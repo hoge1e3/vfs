@@ -36,7 +36,6 @@
     "webpack-ignore-dynamic-require": "^1.0.0"
   },
   "dependencies": {
-    "@hoge1e3/fs": "^1.0.9",
     "buffer": "^6.0.3"
   }
 }
